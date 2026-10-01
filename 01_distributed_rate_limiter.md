@@ -26,17 +26,6 @@ Teaches one of the cleanest distributed-systems problems without requiring a hug
 6. Support concurrent callers.
 7. Expose REST API.
 
-Example:
-
-`POST /v1/limit/check`
-
-```json
-{
-  "key": "user:123",
-  "limit": 100,
-  "windowSeconds": 60
-}
-```
 
 ## Non-Functional Requirements
 
