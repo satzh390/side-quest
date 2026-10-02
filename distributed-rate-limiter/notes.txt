@@ -5,4 +5,7 @@ FR Clarification:
     4. System should support fail-closed or fail-open[Configurable]. No fail-over for now.
 
 NFR Clarification:
-    1. 
+    1. Low latency
+    2. Atomic decision
+    3. Horizontal scaling
+    4. Observable latency & rejection rate
