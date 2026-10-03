@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data 
 public class CheckQuotaRequest {
-
+    private String policyKey;
+    private String identifier;
 }
