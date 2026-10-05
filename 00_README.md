@@ -1,10 +1,10 @@
-# System Design Side Quests — 10 Practical Projects
+# System Design Side Quests — 10 Practical Projects + Payment Gateway
 
 ## Purpose
 
 This repository is a personal learning portfolio, not a production SaaS portfolio.
 
-The goal is to build ten small, deliberately scoped systems that teach the core distributed-systems ideas commonly discussed in backend/system-design interviews:
+The goal is to build a set of small, deliberately scoped systems that teach the core distributed-systems ideas commonly discussed in backend/system-design interviews:
 
 - API design
 - concurrency
@@ -76,7 +76,7 @@ Do not force every technology into every project.
 | 7 | Mini Workflow / DAG Engine | dependency graphs, workers, state machines | 3–4 weeks |
 | 8 | PostgreSQL CDC Pipeline | WAL, offsets, checkpoints, ordering, sinks | 3–4 weeks |
 | 9 | Mini Event Broker | partitions, consumer groups, offsets, ordering | 3–4 weeks |
-| 10 | Distributed Key-Value Store | partitioning, replication, quorum, consistency | 4–6 weeks |
+| 10 | Distributed Key-Value Store | partitioning, replication, quorum, consistency | 4–6 weeks |\n| 13 | Payment Gateway / Payment Orchestration Service | payments, idempotency, webhooks, state machines, reconciliation | 2–3 weeks |
 
 These are intentionally ordered from smaller building blocks toward larger distributed systems.
 
