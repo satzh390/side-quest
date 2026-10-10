@@ -1,5 +1,7 @@
 package com.example.ratelimiter.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -30,22 +32,22 @@ public class RedisScriptConfig {
     }
 
     @Bean
-    public RedisScript<Object> tokenBucketScript() {
-        DefaultRedisScript<Object> script = new DefaultRedisScript<>();
+    public RedisScript<List> tokenBucketScript() {
+        DefaultRedisScript<List> script = new DefaultRedisScript<>();
         script.setLocation(
             new ClassPathResource("scripts/token_bucket.lua")
         );
-        script.setResultType(Object.class);
+        script.setResultType(List.class);
         return script;
     }
 
     @Bean
-    public RedisScript<Object> fixedWindowScript() {
-        DefaultRedisScript<Object> script = new DefaultRedisScript<>();
+    public RedisScript<List> fixedWindowScript() {
+        DefaultRedisScript<List> script = new DefaultRedisScript<>();
         script.setLocation(
             new ClassPathResource("scripts/fixed_window.lua")
         );
-        script.setResultType(Object.class);
+        script.setResultType(List.class);
         return script;
     }
 }

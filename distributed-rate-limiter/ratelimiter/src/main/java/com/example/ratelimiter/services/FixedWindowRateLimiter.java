@@ -16,11 +16,11 @@ import com.example.ratelimiter.model.RateLimiterPolicy;
 public class FixedWindowRateLimiter extends RateLimiter {
 
     private final RedisTemplate<String, Object> redisTemplate;
-    private final RedisScript<Object> fixedWindowScript;
+    private final RedisScript<List> fixedWindowScript;
 
     public FixedWindowRateLimiter(
             RedisTemplate<String, Object> redisTemplate,
-            @Qualifier("fixedWindowScript") RedisScript<Object> fixedWindowScript) {
+            @Qualifier("fixedWindowScript") RedisScript<List> fixedWindowScript) {
         this.redisTemplate = redisTemplate;
         this.fixedWindowScript = fixedWindowScript;
     }
@@ -29,14 +29,13 @@ public class FixedWindowRateLimiter extends RateLimiter {
     public RateLimitResult isAllowed(RateLimiterPolicy rateLimitPolicy, String key) {
         long windowSeconds = getSeconds(rateLimitPolicy.getTimeUnit());
 
-        Object rawResult = redisTemplate.execute(
+        List<?> result = redisTemplate.execute(
                 fixedWindowScript,
                 Collections.singletonList(key),
                 rateLimitPolicy.getLimit().toString(),
                 Long.toString(windowSeconds)
         );
 
-        List<?> result = (List<?>) rawResult;
         boolean allowed = ((Number) result.get(0)).intValue() == 1;
         double remainingTokens = ((Number) result.get(1)).doubleValue();
         long retryAfterMs = ((Number) result.get(2)).longValue();

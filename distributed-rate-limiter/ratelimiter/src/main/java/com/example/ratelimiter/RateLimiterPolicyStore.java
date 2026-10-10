@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
 import com.example.ratelimiter.model.RateLimiterPolicy;
 
-@ConfigurationProperties(prefix = "policies")
+@ConfigurationProperties
 public class RateLimiterPolicyStore {
     
     private final Map<String, RateLimiterPolicy> policies;

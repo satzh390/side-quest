@@ -6,7 +6,13 @@ policies:
     algo: TOKEN_BUCKET
 
   - key: get-subscription-api
-    limit: 60
+    limit: 6
+    timeUnit: MINUTE
+    failMode: FAIL_CLOSED
+    algo: FIXED_WINDOW
+
+  - key: get-cart-api
+    limit: 3
     timeUnit: MINUTE
     failMode: FAIL_OPEN 
-    algo: FIXED_WINDOW
+    algo: TOKEN_BUCKET
