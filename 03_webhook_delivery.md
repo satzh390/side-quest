@@ -2,9 +2,10 @@
 
 ## Problem
 
-Rocketlane's primary unit of work is a **Task**. A task has attributes such as
-name, description, and start date, and can be created, edited, or deleted.
-Tasks belong to Projects, which belong to customer Accounts.
+A project management platform's primary unit of work is a **Task**. A task has
+attributes such as name, description, and start date, and can be created,
+edited, or deleted. Tasks belong to Projects, which belong to customer
+Accounts.
 
 Customers want to receive HTTPS notifications when task changes happen so they
 can run their own business logic. For example, a customer might subscribe to
@@ -71,7 +72,7 @@ Example registration:
 
 ```json
 {
-  "url": "https://hooks.chargebee.com/rocketlane",
+  "url": "https://hooks.example.com/task-events",
   "enabled": true,
   "subscriptions": [
     { "eventType": "task.created" },
@@ -189,8 +190,8 @@ next-attempt time for workers.
 - Promise **at-least-once delivery attempts**, not exactly-once HTTP delivery.
   A timeout can occur after the customer processed a request but before the
   sender received the response.
-- Send `X-Rocketlane-Event-Id`, `X-Rocketlane-Delivery-Id`, and a timestamped
-  HMAC signature. Customers should deduplicate using the event ID.
+- Send `X-Webhook-Event-Id`, `X-Webhook-Delivery-Id`, and a timestamped HMAC
+  signature. Customers should deduplicate using the event ID.
 - Retry network errors, timeouts, and selected 5xx responses with exponential
   backoff and jitter. Honor `Retry-After` where appropriate. Do not retry
   ordinary permanent 4xx errors indefinitely.
